@@ -1,5 +1,5 @@
 #include<head.h>
-bool read(list<User_login>& userList,const string& fileName){
+bool readFile(list<User_login>& userList,const string& fileName){
     ifstream file(fileName);
     if(!file.is_open()){
         cerr<<"Failed to open the file"<<endl;
