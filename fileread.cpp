@@ -19,5 +19,5 @@ bool read(list<User_login>& userList,const string& fileName){
 }
 
 void merge(list<User_login>& userList){
-    
+    userList.sort();
 }
