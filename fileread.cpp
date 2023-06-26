@@ -20,5 +20,8 @@ bool read(list<User_login>& userList,const string& fileName){
 
 void merge(list<User_login>& userList){
     userList.sort();
-    
+    for(list<User_login>::iterator it=userList.begin();it!=userList.end();it++){
+        it->count=count(userList.begin(),userList.end(),it->name);
+    }
+    userList.erase(unique(userList.begin(),userList.end()),userList.end());
 }
