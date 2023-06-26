@@ -19,9 +19,19 @@ bool readFile(list<User_login>& userList,const string& fileName){
 }
 
 void merge(list<User_login>& userList){
-    userList.sort();
-    for(list<User_login>::iterator it=userList.begin();it!=userList.end();it++){
-        it->count=count(userList.begin(),userList.end(),it->name);
+    // userList.sort();
+    // for(list<User_login>::iterator it=userList.begin();it!=userList.end();it++){
+    //     it->count=count(userList.begin(),userList.end(),it->name);
+    // }
+    // userList.erase(unique(userList.begin(),userList.end()),userList.end());
+    unordered_map<string,int> nameCounts;
+    for(const User_login&user:userList){
+        nameCounts[user.name]++;
     }
-    userList.erase(unique(userList.begin(),userList.end()),userList.end());
+    for(User_login& user:userList){
+        user.count=nameCounts[user.name];
+    }
+    userList.erase(unique(userList.begin(),userList.end(),[](const User_login&a,const User_login&b){
+        return a.name==b.name;
+    }),userList.end());
 }
