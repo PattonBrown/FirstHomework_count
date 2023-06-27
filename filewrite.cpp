@@ -9,4 +9,5 @@ bool writeFile(const list<User_login>& userList,const string& fileName){
         file<<user.name<<","<<user.count<<endl;
     }
     file.close();
+    return true;
 }
